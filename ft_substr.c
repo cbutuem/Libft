@@ -34,7 +34,7 @@ static size_t	sub_size(char const *str, int b, size_t t)
 		}
 		i++;
 	}
-	return (0);
+	return (n);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -43,15 +43,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	ii;
 	char	*c;
 
+	i = 0;
+	ii = 0;
 	if (!s)
 		return (NULL);
 	if (start > ft_strlen(s))
 		return (ft_strdup(""));
-	c = (char *) malloc(sub_size(s, start, len) * sizeof(char));
+	c = (char *) ft_calloc(sub_size(s, start, len), sizeof(char));
 	if (c == NULL)
 		return (NULL);
-	i = 0;
-	ii = 0;
 	while (s[i] != '\0')
 	{
 		if (i == start)
@@ -63,5 +63,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		}
 		i++;
 	}
-	return (NULL);
+	return (c);
 }
